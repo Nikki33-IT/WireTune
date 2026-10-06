@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\assets\icon.ico</ApplicationIcon>
+    <AssemblyName>WireTune</AssemblyName>
+    <RootNamespace>WireTune</RootNamespace>
+    <Title>WireTune</Title>
+    <Product>WireTune - Offline Network Optimizer</Product>
+    <Description>Ultra-lightweight, 100% private, open-source network adapter optimizer</Description>
+    <Version>1.0.0</Version>
+    <Authors>WireTune Contributors</Authors>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <PathMap>$(MSBuildThisFileDirectory)=/_</PathMap>
+    <Deterministic>true</Deterministic>
+    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\assets\icon.ico">
+      <Link>icon.ico</Link>
+    </Resource>
+  </ItemGroup>
+
+</Project>

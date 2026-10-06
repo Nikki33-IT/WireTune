@@ -1,0 +1,35 @@
+{
+  "name": "wiretune",
+  "version": "1.0.0",
+  "description": "A lightweight open-source network adapter optimization utility.",
+  "main": "src/desktop-launcher.js",
+  "scripts": {
+    "start": "node src/desktop-launcher.js",
+    "serve": "node src/server.js",
+    "dev": "node src/desktop-launcher.js",
+    "test": "node test/suite.js",
+    "build:exe": "dotnet publish src-desktop/WireTune.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o ."
+  },
+  "keywords": [
+    "network",
+    "optimizer",
+    "windows",
+    "fluent-design",
+    "low-latency",
+    "privacy-first",
+    "open-source"
+  ],
+  "author": "WireTune Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allynIT/WireTune.git"
+  },
+  "bugs": {
+    "url": "https://github.com/allynIT/WireTune/issues"
+  },
+  "homepage": "https://github.com/allynIT/WireTune#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

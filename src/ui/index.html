@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WireTune — Simple. Fast. Private.</title>
+  <meta name="description" content="A lightweight open-source network adapter optimization utility for Windows.">
+  <link rel="icon" type="image/x-icon" href="/assets/icon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <link rel="stylesheet" href="styles/fluent.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 1. MODERN SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="brand-section">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1>WireTune</h1>
+            <span class="brand-badge">PRO</span>
+          </div>
+          <p>Simple. Fast. Private.</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <div class="nav-group-label">Core Operations</div>
+        <a class="nav-item active" data-tab="dashboard" id="navDashboard" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="nav-item" data-tab="optimize" id="navOptimize" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Optimize</span>
+        </a>
+        <a class="nav-item" data-tab="benchmark" id="navBenchmark" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 10"/><path d="M16 16l3.5 3.5"/></svg>
+          <span>Benchmark</span>
+        </a>
+        <a class="nav-item" data-tab="lab" id="navLab" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M10 2v7.31L4.14 20.3A2 2 0 0 0 5.86 23h12.28a2 2 0 0 0 1.72-2.7L14 9.31V2"/></svg>
+          <span>Optimization Lab</span>
+        </a>
+        <a class="nav-item" data-tab="dns" id="navDnsBenchmark" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>DNS Benchmark</span>
+        </a>
+        <a class="nav-item" data-tab="diagnostics" id="navDiagnostics" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>Diagnostics</span>
+        </a>
+        <a class="nav-item" data-tab="profiles" id="navProfiles" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Profiles</span>
+        </a>
+
+        <div class="nav-divider"></div>
+        <div class="nav-group-label">System</div>
+
+        <a class="nav-item" data-tab="settings" id="navSettings" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+        <a class="nav-item" data-tab="about" id="navAbout" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-status-badge standard" id="adminStatusBadge">
+          <span style="display:flex; align-items:center; gap:6px;">
+            <span class="status-dot warning" id="adminStatusDot"></span>
+            <span id="adminStatusText">Standard User</span>
+          </span>
+          <span style="font-size: 0.65rem; color: var(--text-tertiary);" id="adminStatusRole">Limited</span>
+        </div>
+        <button class="admin-restart-btn" id="restartAdminBtn">
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Restart as Administrator</span>
+        </button>
+        <div class="author-brand-footer">
+          WireTune • Open Source • <a href="https://github.com/allynIT" target="_blank" rel="noopener noreferrer">Made by allynIT</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 2. MAIN VIEW WINDOW -->
+    <main class="app-main">
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <span style="font-weight:700; color:var(--text-primary);">WireTune</span>
+          <span style="color:var(--border-card);">/</span>
+          <span style="font-size:0.82rem; color:var(--text-secondary);" id="topAdlibQuote">Hardware-aware network precision.</span>
+          <span style="color:var(--border-card);">|</span>
+          <div class="top-status-indicator">
+            <span class="status-dot"></span>
+            <span>Works offline</span>
+          </div>
+        </div>
+        <div class="top-bar-right">
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <select class="select-compact" id="langSelectTop" aria-label="Select Language"></select>
+          <button class="btn-secondary" id="topChangeAdapterBtn" style="padding: 5px 12px; font-size: 0.8rem;">
+            <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <span id="topSelectedAdapterLabel">Change Adapter</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <!-- ========================================== -->
+        <!-- VIEW 1: DASHBOARD                          -->
+        <!-- ========================================== -->
+        <section class="view-section active" id="view-dashboard">
+          <div class="dashboard-grid">
+            <!-- Adapter Hero Card -->
+            <div class="adapter-hero-card">
+              <div class="adapter-hero-info">
+                <div class="adapter-hero-icon" id="dashboardAdapterIcon">
+                  <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+                </div>
+                <div class="adapter-hero-meta">
+                  <h2 id="dashboardAdapterTitle">Intel Wi-Fi 6E AX211</h2>
+                  <div class="adapter-hero-pills">
+                    <span class="hero-pill status-online" id="dashboardLiveStatusBadge">
+                      <span class="status-dot"></span>
+                      <span id="dashboardLiveStatusText">Connected</span>
+                    </span>
+                    <span class="hero-pill" id="dashboardChipMedia">Wi-Fi 6E</span>
+                    <span class="hero-pill" id="dashboardChipSpeed">1.2 Gbps</span>
+                    <span class="hero-pill" id="dashboardChipSignal">Signal: Excellent</span>
+                    <span class="hero-pill" id="dashboardChipMac">MAC: 00-1A-2B-8C-3F-4D</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-secondary" id="dashChangeAdapterBtn">
+                Change Adapter
+              </button>
+            </div>
+
+            <!-- Optimization Main Hero Card -->
+            <div class="optimization-hero-card">
+              <div class="opt-hero-left">
+                <h3>
+                  <span>Optimization Engine</span>
+                  <span class="brand-badge" id="heroActiveProfileBadge">Gaming Profile</span>
+                </h3>
+                <p>Hardware-tuned low-latency configuration ready for your active controller.</p>
+                <div class="opt-status-row">
+                  <span class="opt-badge-count" id="heroCompatibleCount">
+                    ⚡ 5 compatible optimizations available
+                  </span>
+                  <span class="review-link" id="heroReviewChangesLink">Review proposed changes →</span>
+                </div>
+              </div>
+              <button class="btn-optimize-hero" id="dashboardOptimizeBtn">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:currentColor;fill:currentColor;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>Optimize Now</span>
+              </button>
+            </div>
+
+            <!-- 4 Overview Quick Cards -->
+            <div class="overview-cards-grid">
+              <div class="overview-card" id="ovCardAdapter" role="button" tabindex="0">
+                <div class="ov-header">
+                  <span>Adapter Status</span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                </div>
+                <div class="ov-value" id="ovValAdapter" style="color:var(--color-success);">Connected</div>
+                <div class="ov-sub" id="ovSubAdapter">Active hardware controller</div>
+              </div>
+
+              <div class="overview-card" id="ovCardProfile" role="button" tabindex="0">
+                <div class="ov-header">
+                  <span>Active Profile</span>
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+                </div>
+                <div class="ov-value" id="ovValProfile" style="color:var(--accent-primary);">Gaming</div>
+                <div class="ov-sub">Latency & responsiveness focused</div>
+              </div>
+
+              <div class="overview-card" id="ovCardHealth" role="button" tabindex="0">
+                <div class="ov-header">
+                  <span>Health Score</span>
+                  <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div class="ov-value" id="ovValHealth" style="color:var(--color-success);">87 / 100</div>
+                <div class="ov-sub">Optimal bufferbloat rating</div>
+              </div>
+
+              <div class="overview-card" id="ovCardBenchmark" role="button" tabindex="0">
+                <div class="ov-header">
+                  <span>Last Benchmark</span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 10"/></svg>
+                </div>
+                <div class="ov-value" id="ovValBenchmark">18 ms</div>
+                <div class="ov-sub">Jitter: 1.8 ms • 0% loss</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 2: OPTIMIZE SCREEN                    -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-optimize">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Network Optimization</h2>
+              <p class="section-subtitle">Review and apply driver-validated settings tailored for your controller.</p>
+            </div>
+            <button class="btn-optimize-hero" id="screenApplyOptimizeBtn" style="padding: 10px 24px; font-size: 0.9rem;">
+              <span>Apply Optimizations</span>
+            </button>
+          </div>
+
+          <!-- Profiles Strip -->
+          <div class="profile-selector-strip" id="optimizeProfileStrip">
+            <div class="profile-pill-tab active" data-profile="gaming">
+              <h4>Gaming</h4>
+              <span>Minimal latency & packet delay</span>
+            </div>
+            <div class="profile-pill-tab" data-profile="streaming">
+              <h4>Streaming</h4>
+              <span>Buffer window & queue stability</span>
+            </div>
+            <div class="profile-pill-tab" data-profile="balanced">
+              <h4>Balanced</h4>
+              <span>Safe general-purpose profile</span>
+            </div>
+            <div class="profile-pill-tab" data-profile="maxperf">
+              <h4>Max Performance</h4>
+              <span>Multi-gigabit throughput</span>
+            </div>
+            <div class="profile-pill-tab" data-profile="custom">
+              <h4>Custom</h4>
+              <span>Manual parameter controls</span>
+            </div>
+          </div>
+
+          <!-- Changes List Cards -->
+          <div class="changes-card-list" id="optimizeChangesList">
+            <div class="change-item-card">
+              <div class="change-item-left">
+                <div class="change-icon-badge">✓</div>
+                <div class="change-item-meta">
+                  <h4>Receive Buffers (Rx Descriptors)</h4>
+                  <p>Increases packet buffer queue from 512 to 2048 to prevent micro-drops.</p>
+                </div>
+              </div>
+              <button class="why-setting-btn" data-key="*ReceiveBuffers">Why this setting?</button>
+            </div>
+
+            <div class="change-item-card">
+              <div class="change-item-left">
+                <div class="change-icon-badge">✓</div>
+                <div class="change-item-meta">
+                  <h4>Receive Side Scaling (RSS)</h4>
+                  <p>Distributes network packet processing across multiple CPU logical cores.</p>
+                </div>
+              </div>
+              <button class="why-setting-btn" data-key="*RSS">Why this setting?</button>
+            </div>
+
+            <div class="change-item-card">
+              <div class="change-item-left">
+                <div class="change-icon-badge">✓</div>
+                <div class="change-item-meta">
+                  <h4>Energy-Efficient Ethernet (EEE)</h4>
+                  <p>Disables power-saving sleep transitions that introduce latency spikes.</p>
+                </div>
+              </div>
+              <button class="why-setting-btn" data-key="*EEE">Why this setting?</button>
+            </div>
+
+            <div class="change-item-card">
+              <div class="change-item-left">
+                <div class="change-icon-badge warning">⚠</div>
+                <div class="change-item-meta">
+                  <h4>Interrupt Moderation</h4>
+                  <p>Reduces interrupt aggregation delay to deliver packets immediately.</p>
+                </div>
+              </div>
+              <button class="why-setting-btn" data-key="*InterruptModeration">Why this setting?</button>
+            </div>
+
+            <div class="change-item-card">
+              <div class="change-item-left">
+                <div class="change-icon-badge">✓</div>
+                <div class="change-item-meta">
+                  <h4>Large Send Offload v2 (IPv4 & IPv6)</h4>
+                  <p>Optimizes TCP segmentation offload for sustained high link throughput.</p>
+                </div>
+              </div>
+              <button class="why-setting-btn" data-key="*LsoV2IPv4">Why this setting?</button>
+            </div>
+          </div>
+
+          <div style="font-size:0.78rem; color:var(--text-tertiary); display:flex; align-items:center; gap:8px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Pre-flight snapshot backup will be created automatically before modifying any driver parameter.</span>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 3: BENCHMARK SCREEN                   -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-benchmark">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Network Benchmark Center</h2>
+              <p class="section-subtitle">Real-time throughput, latency, and packet jitter diagnostics.</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn-secondary" id="benchExportJsonBtn">Export JSON</button>
+              <button class="btn-secondary" id="benchExportCsvBtn">Export CSV</button>
+              <button class="btn-optimize-hero" id="runBenchmarkBtn" style="padding: 10px 22px; font-size: 0.9rem;">
+                ▶ Run Benchmark Now
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Large Stat Cards -->
+          <div class="benchmark-stat-grid">
+            <div class="benchmark-card">
+              <div class="benchmark-label">Download</div>
+              <div class="benchmark-value" id="benchValDl">487.2 <span class="benchmark-unit">Mbps</span></div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-label">Upload</div>
+              <div class="benchmark-value" id="benchValUl">92.4 <span class="benchmark-unit">Mbps</span></div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-label">Latency</div>
+              <div class="benchmark-value" id="benchValPing">18 <span class="benchmark-unit">ms</span></div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-label">Jitter</div>
+              <div class="benchmark-value" id="benchValJitter">2.4 <span class="benchmark-unit">ms</span></div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-label">Packet Loss</div>
+              <div class="benchmark-value" id="benchValLoss">0.0 <span class="benchmark-unit">%</span></div>
+            </div>
+          </div>
+
+          <!-- Before / After Comparative Panel -->
+          <div class="comparison-container">
+            <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:4px;">
+              Before vs After Comparison
+            </h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary);">Direct validation of optimization impact on your physical link.</p>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Before Optimization</th>
+                  <th>After Optimization</th>
+                  <th>Delta Indicator</th>
+                </tr>
+              </thead>
+              <tbody id="comparisonTableBody">
+                <tr>
+                  <td><strong>Throughput (DL)</strong></td>
+                  <td>487.2 Mbps</td>
+                  <td>492.8 Mbps</td>
+                  <td><span class="metric-indicator improved">↑ +5.6 Mbps</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Latency (Ping)</strong></td>
+                  <td>18.4 ms</td>
+                  <td>16.1 ms</td>
+                  <td><span class="metric-indicator improved">↑ -2.3 ms</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Jitter</strong></td>
+                  <td>2.4 ms</td>
+                  <td>1.8 ms</td>
+                  <td><span class="metric-indicator improved">↑ -0.6 ms</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Packet Loss</strong></td>
+                  <td>0.0%</td>
+                  <td>0.0%</td>
+                  <td><span class="metric-indicator unchanged">→ 0.0%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 4: OPTIMIZATION LAB SCREEN            -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-lab">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Optimization Lab</h2>
+              <p class="section-subtitle">Test individual driver changes and evaluate measurable latency impact.</p>
+            </div>
+          </div>
+
+          <div class="lab-workbench-card">
+            <h3 style="font-size:1.15rem; font-weight:700;">A/B Setting Benchmark</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:4px;">
+              Isolate and verify the impact of a single property without modifying your overall configuration.
+            </p>
+
+            <div class="lab-controls-row">
+              <div class="control-field">
+                <label>Target Setting</label>
+                <select class="control-select" id="labSettingSelect">
+                  <option value="*InterruptModeration">Interrupt Moderation</option>
+                  <option value="*EEE">Energy-Efficient Ethernet</option>
+                  <option value="*FlowControl">Flow Control</option>
+                  <option value="*ReceiveBuffers">Receive Buffers</option>
+                </select>
+              </div>
+              <div class="control-field">
+                <label>Current Value</label>
+                <input class="control-input" id="labCurrentVal" value="Enabled" readonly />
+              </div>
+              <div class="control-field">
+                <label>Test Value</label>
+                <select class="control-select" id="labTestVal">
+                  <option value="Disabled">Disabled</option>
+                  <option value="Enabled">Enabled</option>
+                </select>
+              </div>
+              <div class="control-field">
+                <label>&nbsp;</label>
+                <button class="btn-optimize-hero" id="labRunTestBtn" style="padding: 10px 18px; font-size: 0.88rem; width:100%; justify-content:center;">
+                  Run A/B Test
+                </button>
+              </div>
+            </div>
+
+            <div class="lab-result-card" id="labResultCard">
+              <div>
+                <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">A/B Probe Latency</div>
+                <div style="font-size:1.25rem; font-weight:800; color:var(--text-primary); margin-top:4px;" id="labLatencyDeltaText">
+                  18.4 ms → 16.9 ms
+                </div>
+              </div>
+              <span class="metric-indicator improved" style="font-size:0.85rem; padding: 6px 14px;" id="labVerdictBadge">
+                ↑ Potential improvement detected
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 5: DNS BENCHMARK                      -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-dns">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">DNS Resolver Benchmark</h2>
+              <p class="section-subtitle">Measure query response times across trusted global public resolvers.</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn-secondary" id="dnsResetDhcpBtn">Reset to DHCP</button>
+              <button class="btn-optimize-hero" id="dnsRunBenchmarkBtn" style="padding: 10px 22px; font-size: 0.9rem;">
+                ▶ Run DNS Benchmark
+              </button>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <table class="dns-table">
+              <thead>
+                <tr>
+                  <th>Resolver Provider</th>
+                  <th>Primary / Secondary IP</th>
+                  <th>Latency</th>
+                  <th>Reliability</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dnsTableBody">
+                <tr>
+                  <td><strong>Current Adapter DNS</strong></td>
+                  <td>1.1.1.1 • 1.0.0.1</td>
+                  <td><strong>12 ms</strong></td>
+                  <td>100%</td>
+                  <td><span class="metric-indicator unchanged">Active</span></td>
+                  <td><button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" disabled>Active</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Cloudflare</strong></td>
+                  <td>1.1.1.1 • 1.0.0.1</td>
+                  <td><strong>9 ms</strong></td>
+                  <td>100%</td>
+                  <td><span class="metric-indicator improved">Recommended</span></td>
+                  <td><button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="app.applyDnsPreset('1.1.1.1','1.0.0.1')">Use Selected DNS</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Quad9 (Security Filter)</strong></td>
+                  <td>9.9.9.9 • 149.112.112.112</td>
+                  <td><strong>13 ms</strong></td>
+                  <td>99.9%</td>
+                  <td><span class="metric-indicator improved">Good</span></td>
+                  <td><button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="app.applyDnsPreset('9.9.9.9','149.112.112.112')">Use Selected DNS</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Google Public DNS</strong></td>
+                  <td>8.8.8.8 • 8.8.4.4</td>
+                  <td><strong>15 ms</strong></td>
+                  <td>100%</td>
+                  <td><span class="metric-indicator unchanged">Standard</span></td>
+                  <td><button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="app.applyDnsPreset('8.8.8.8','8.8.4.4')">Use Selected DNS</button></td>
+                </tr>
+                <tr>
+                  <td><strong>AdGuard (Ad Blocking)</strong></td>
+                  <td>94.140.14.14 • 94.140.15.15</td>
+                  <td><strong>19 ms</strong></td>
+                  <td>99.8%</td>
+                  <td><span class="metric-indicator unchanged">Standard</span></td>
+                  <td><button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="app.applyDnsPreset('94.140.14.14','94.140.15.15')">Use Selected DNS</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 6: DIAGNOSTICS SCREEN                 -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-diagnostics">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Network Diagnostics</h2>
+              <p class="section-subtitle">Real-time health verification and driver capability audit.</p>
+            </div>
+            <button class="btn-secondary" id="diagExportBtn">Export Diagnostic Logs</button>
+          </div>
+
+          <div class="diag-status-banner" id="diagStatusBanner">
+            <div>
+              <h3 style="font-size:1.25rem; font-weight:800;" id="diagBannerTitle">Connection Healthy</h3>
+              <p style="font-size:0.85rem; margin-top:3px;" id="diagBannerDesc">All critical adapter and driver subsystems are functioning normally.</p>
+            </div>
+            <span class="status-dot" style="width:14px;height:14px;"></span>
+          </div>
+
+          <div class="diag-checklist-grid">
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">Adapter Hardware</div>
+                  <div class="diag-check-sub">PCIe / Native Link active</div>
+                </div>
+              </div>
+            </div>
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">Driver Stack</div>
+                  <div class="diag-check-sub">NDIS 6.x NetAdapter</div>
+                </div>
+              </div>
+            </div>
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">Default Gateway</div>
+                  <div class="diag-check-sub">0.8 ms local hop</div>
+                </div>
+              </div>
+            </div>
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">DNS Resolution</div>
+                  <div class="diag-check-sub">Fast response verified</div>
+                </div>
+              </div>
+            </div>
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">Packet Loss</div>
+                  <div class="diag-check-sub">0.0% loss rate</div>
+                </div>
+              </div>
+            </div>
+            <div class="diag-check-item">
+              <div class="diag-check-left">
+                <span class="change-icon-badge">✓</span>
+                <div>
+                  <div class="diag-check-title">Latency Stability</div>
+                  <div class="diag-check-sub">Minimal jitter detected</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:12px;">Raw Driver & Hardware Information</h4>
+            <pre id="diagnosticsInfoPre" style="background:var(--bg-subtle); padding:16px; border-radius:var(--radius-sm); font-family:var(--font-mono); font-size:0.78rem; max-height:220px; overflow:auto; border:1px solid var(--border-subtle);"></pre>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 7: PROFILES SCREEN                    -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-profiles">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Adapter Profiles</h2>
+              <p class="section-subtitle">Pre-configured and custom property collections tailored for your workflow.</p>
+            </div>
+            <button class="btn-optimize-hero" id="profilesCreateBtn" style="padding:10px 22px; font-size:0.9rem;">
+              + Create Profile
+            </button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;">
+            <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3 style="font-size:1.15rem; font-weight:700;">Gaming</h3>
+                  <span class="brand-badge">Low Latency</span>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:8px;">
+                  Minimizes interrupt coalescing and disables energy-saving power throttling for maximum responsiveness.
+                </p>
+              </div>
+              <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; color:var(--text-tertiary);">17 properties configured</span>
+                <button class="btn-secondary" onclick="app.selectProfile('gaming')">Apply Profile</button>
+              </div>
+            </div>
+
+            <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3 style="font-size:1.15rem; font-weight:700;">Streaming</h3>
+                  <span class="brand-badge">High Throughput</span>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:8px;">
+                  Maximizes buffer window depth and optimizes packet queues for uninterrupted video and broadcast stability.
+                </p>
+              </div>
+              <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; color:var(--text-tertiary);">16 properties configured</span>
+                <button class="btn-secondary" onclick="app.selectProfile('streaming')">Apply Profile</button>
+              </div>
+            </div>
+
+            <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3 style="font-size:1.15rem; font-weight:700;">Balanced</h3>
+                  <span class="brand-badge">Safe Default</span>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:8px;">
+                  Reliable general-purpose profile recommended for daily work, web browsing, and balanced efficiency.
+                </p>
+              </div>
+              <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; color:var(--text-tertiary);">12 properties configured</span>
+                <button class="btn-secondary" onclick="app.selectProfile('balanced')">Apply Profile</button>
+              </div>
+            </div>
+
+            <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3 style="font-size:1.15rem; font-weight:700;">Maximum Performance</h3>
+                  <span class="brand-badge">Multi-Gigabit</span>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:8px;">
+                  Aggressive offload tuning for high-bandwidth multi-gigabit fiber and 2.5G/10G Ethernet cards.
+                </p>
+              </div>
+              <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; color:var(--text-tertiary);">17 properties configured</span>
+                <button class="btn-secondary" onclick="app.selectProfile('maxperf')">Apply Profile</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 8: SETTINGS SCREEN                    -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-settings">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Settings</h2>
+              <p class="section-subtitle">Preferences, safety behavior, and local storage mode.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <!-- General Settings -->
+            <div class="card">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:14px;">General</h3>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div class="control-field">
+                  <label>Language</label>
+                  <select class="control-select" id="settingsLangSelect"></select>
+                </div>
+                <div class="control-field">
+                  <label>Color Theme</label>
+                  <select class="control-select" id="settingsThemeSelect">
+                    <option value="dark">Dark Theme (Default)</option>
+                    <option value="light">Light Theme</option>
+                    <option value="system">Follow Windows System</option>
+                  </select>
+                </div>
+                <div class="control-field">
+                  <label>Interface Animations</label>
+                  <select class="control-select" id="settingsAnimationsSelect">
+                    <option value="enabled">Enabled (Smooth transitions)</option>
+                    <option value="disabled">Disabled (Reduce Motion)</option>
+                  </select>
+                </div>
+                <div class="control-field">
+                  <label>Ping Target</label>
+                  <select class="control-select" id="settingsPingSelect">
+                    <option value="gateway">Default Gateway (Local Router)</option>
+                    <option value="dns">Primary DNS Server</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Privacy & Storage -->
+            <div class="card">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:14px;">Privacy & Local Storage</h3>
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div>
+                    <div style="font-weight:600; font-size:0.92rem;">Telemetry & Analytics</div>
+                    <div style="font-size:0.78rem; color:var(--text-tertiary);">Zero data leaves your computer. Strictly offline execution.</div>
+                  </div>
+                  <span class="brand-badge" style="color:var(--color-success); border-color:var(--color-success-border);">100% OFF (Zero Leaks)</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid var(--border-subtle);">
+                  <div>
+                    <div style="font-weight:600; font-size:0.92rem;">Portable Storage Mode</div>
+                    <div style="font-size:0.78rem; color:var(--text-tertiary);">Stores all profiles, backups, and configs locally in ./WireTuneData/.</div>
+                  </div>
+                  <button class="btn-secondary" id="settingsTogglePortableBtn">Toggle Mode</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 9: ABOUT SCREEN                       -->
+        <!-- ========================================== -->
+        <section class="view-section" id="view-about">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">About WireTune</h2>
+              <p class="section-subtitle">Open-source network adapter optimization utility.</p>
+            </div>
+          </div>
+
+          <div class="card-elevated" style="text-align:center; padding:36px 20px;">
+            <div class="brand-icon" style="width:54px; height:54px; margin:0 auto 16px auto; border-radius:var(--radius-md);">
+              <svg viewBox="0 0 24 24" style="width:30px;height:30px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h2 style="font-size:1.5rem; font-weight:800; letter-spacing:-0.02em;">WireTune</h2>
+            <p style="font-size:0.95rem; color:var(--accent-primary); font-weight:600; margin-top:2px;">Simple. Fast. Private.</p>
+            <p style="font-size:0.84rem; color:var(--text-secondary); max-width:480px; margin:12px auto 20px auto;">
+              Ultra-lightweight open-source utility designed to safely tune low-level Windows network adapter driver properties with zero telemetry.
+            </p>
+
+            <div style="display:flex; gap:10px; justify-content:center; margin-bottom:24px;">
+              <a href="https://github.com/allynIT/WireTune" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none;">GitHub</a>
+              <a href="https://github.com/allynIT/WireTune" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none;">View Source</a>
+              <a href="https://github.com/allynIT/WireTune/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none;">License (MIT)</a>
+            </div>
+
+            <div style="display:inline-flex; gap:16px; font-size:0.75rem; color:var(--text-tertiary);">
+              <span>Version: <strong>1.0.0</strong></span>
+              <span>Platform: <strong>Windows 10 / 11 (x64)</strong></span>
+              <span>Made by: <strong>allynIT</strong></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: OPTIMIZATION PROGRESS EXPERIENCE     -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="optimizeProgressModal">
+    <div class="modal-box scale-in">
+      <div class="modal-header">
+        <h3 class="modal-title" id="progressModalTitle">Optimizing your adapter</h3>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-secondary);" id="progressModalSub">
+        Applying driver-validated configuration profile safely.
+      </p>
+
+      <div class="progress-step-list">
+        <div class="progress-step-item done" id="step1">
+          <div class="step-circle">✓</div>
+          <span>Creating local pre-flight backup snapshot</span>
+        </div>
+        <div class="progress-step-item done" id="step2">
+          <div class="step-circle">✓</div>
+          <span>Checking hardware driver capabilities</span>
+        </div>
+        <div class="progress-step-item active" id="step3">
+          <div class="step-circle radar-wave">●</div>
+          <span>Applying compatible optimizations</span>
+        </div>
+        <div class="progress-step-item" id="step4">
+          <div class="step-circle">○</div>
+          <span>Verifying applied settings</span>
+        </div>
+        <div class="progress-step-item" id="step5">
+          <div class="step-circle">○</div>
+          <span>Finalizing and updating status</span>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;" id="progressModalActions">
+        <button class="btn-secondary" id="progressViewChangesBtn" style="display:none;">View Changes</button>
+        <button class="btn-secondary" id="progressRunBenchBtn" style="display:none;">Run Benchmark</button>
+        <button class="btn-optimize-hero" id="progressDoneBtn" style="padding:8px 24px; font-size:0.88rem; display:none;">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: WHY THIS SETTING?                   -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="whyModal">
+    <div class="modal-box scale-in">
+      <div class="modal-header">
+        <h3 class="modal-title" id="whyModalTitle">Setting Details</h3>
+        <button class="icon-btn" id="whyModalCloseBtn">✕</button>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px; font-size:0.88rem;">
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">Registry Keyword</span>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--accent-primary); margin-top:2px;" id="whyModalKey">*SettingKey</div>
+        </div>
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">What It Does</span>
+          <p style="color:var(--text-primary); margin-top:3px;" id="whyModalDoes">Explanation of property...</p>
+        </div>
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">WireTune Recommendation</span>
+          <p style="color:var(--text-primary); margin-top:3px;" id="whyModalRec">Recommended value rationale...</p>
+        </div>
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">Potential Benefit</span>
+          <p style="color:var(--color-success); margin-top:3px;" id="whyModalBenefit">Reduced latency and lower jitter.</p>
+        </div>
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; font-weight:700; color:var(--text-tertiary);">Potential Downside</span>
+          <p style="color:var(--color-warning); margin-top:3px;" id="whyModalDownside">None on modern desktop hardware.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: ADAPTER SELECTOR                    -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="adapterSelectorModal">
+    <div class="modal-box scale-in">
+      <div class="modal-header">
+        <h3 class="modal-title">Select Network Adapter</h3>
+        <button class="icon-btn" id="adapterModalCloseBtn">✕</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:16px;">
+        Choose the physical hardware network card to inspect and optimize:
+      </p>
+      <div style="display:flex; flex-direction:column; gap:10px;" id="adapterModalList">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SCRIPTS                                    -->
+  <!-- ========================================== -->
+  <script src="scripts/api.js"></script>
+  <script src="scripts/i18n-client.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "author": "allynIT",
+  "github": "https://github.com/allynIT",
+  "startup": [
+    "Clean buffers, low jitter. Let's tune.",
+    "Hardware-aware network precision.",
+    "Zero telemetry. 100% offline control.",
+    "WireTune initialized — made by allynIT."
+  ],
+  "optimizing": [
+    "Negotiating optimal queue depth...",
+    "Trimming energy sleep latencies...",
+    "Calibrating NIC offload engines...",
+    "Applying safe driver parameters..."
+  ],
+  "success": [
+    "Adapter tuned. Packets flying clean.",
+    "Configured for maximum responsiveness.",
+    "Safe hardware tweaks locked in.",
+    "Optimization complete. Ready for benchmark."
+  ],
+  "restore": [
+    "Reverting to snapshot baseline.",
+    "Factory state restored safely.",
+    "Previous hardware configuration re-engaged."
+  ],
+  "benchmark": [
+    "Sampling network jitter and throughput...",
+    "Measuring real-world packet consistency...",
+    "Median-filtered measurement in progress..."
+  ],
+  "dns": [
+    "Resolving at the speed of light.",
+    "Fast resolvers keep latency clean.",
+    "Comparing Anycast routes across global backbones."
+  ],
+  "profiles": [
+    "Custom profile tailored for hardware excellence.",
+    "Hardware presets loaded safely.",
+    "Fine-tuned network behavior locked in."
+  ],
+  "easter_egg": [
+    "Ping 0ms? That's local loopback talking.",
+    "Crafted with care by allynIT for the open-source community.",
+    "Every microsecond counts on the wire."
+  ]
+}

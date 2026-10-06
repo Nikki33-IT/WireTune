@@ -1,0 +1,23 @@
+<Window x:Class="WireTune.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="WireTune — Offline Network Optimizer"
+        Height="760" Width="1120"
+        MinHeight="620" MinWidth="860"
+        WindowStartupLocation="CenterScreen"
+        Background="#0f1117"
+        Icon="icon.ico">
+    <Grid>
+        <wv2:WebView2 Name="webView" />
+        <Border Name="loadingOverlay" Background="#0f1117" Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="⚡ WireTune" Foreground="#0099ff" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Starting offline network optimizer..." Foreground="#a6afc3" FontSize="14" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

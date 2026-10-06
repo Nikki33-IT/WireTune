@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Environment and Secrets
+.env
+.env.local
+.env.*.local
+
+# Runtime logs and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.bak
+
+# Application State & Local Data (Privacy)
+config.json
+portable.dat
+WireTuneData/
+backups/Test-Adapter/
+diagnostics/wiretune-log-*.json
+
+# Build outputs and intermediate binaries
+src-desktop/bin/
+src-desktop/obj/
+*.pdb
+Microsoft.Web.WebView2.*.xml
+
+# Media composition source files (kept local)
+intro/
+
+# IDE & OS files
+.vscode/
+.idea/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db

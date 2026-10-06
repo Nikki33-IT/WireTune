@@ -1,0 +1,73 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve WireTune
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please provide as much technical detail as possible without including any personal data or private network credentials.
+  - type: input
+    id: version
+    attributes:
+      label: WireTune Version
+      description: What version of WireTune are you running? (e.g., 1.0.0, Portable or Installed)
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows Version & Build
+      description: Which Windows edition and build are you using?
+      placeholder: "Windows 11 Pro 23H2 (Build 22631)"
+    validations:
+      required: true
+  - type: input
+    id: adapter
+    attributes:
+      label: Network Adapter Model
+      description: The name and model of the physical network card (e.g., Intel Ethernet Controller I225-V, Marvell AQtion 10G)
+      placeholder: "Intel(R) Ethernet Controller I225-V"
+    validations:
+      required: true
+  - type: input
+    id: driver
+    attributes:
+      label: Driver Version
+      description: Driver version reported in Device Manager or WireTune Adapter Details
+      placeholder: "1125.27.50.920"
+    validations:
+      required: false
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce the problem?
+      placeholder: |
+        1. Open WireTune
+        2. Select adapter '...'
+        3. Click '...'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened? (Include non-private error messages if applicable)
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Privacy Check
+      options:
+        - label: I confirm this report contains no personal data, private IP addresses, or secrets.
+          required: true
