@@ -67,6 +67,19 @@ class PlatformBridge {
     return { success: false, error: 'Unsupported platform' };
   }
 
+  static async setAdvancedPropertiesBatch(adapterName, changes) {
+    if (isWin) {
+      return WindowsAdapter.setAdvancedPropertiesBatch(adapterName, changes);
+    }
+    // Fallback: sequential for non-Windows
+    const results = [];
+    for (const ch of changes) {
+      const res = await LinuxAdapter.setAdvancedProperty(adapterName, ch.keyword, ch.displayName, ch.value);
+      results.push({ ...ch, success: res.success, error: res.error || null });
+    }
+    return results;
+  }
+
   static async getTcpSettings() {
     if (isWin) {
       return WindowsTCP.getTcpSettings();
