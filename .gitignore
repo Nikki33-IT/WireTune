@@ -5,6 +5,10 @@ node_modules/
 .env
 .env.local
 .env.*.local
+*.env
+*.secret
+*.key
+*.pem
 
 # Runtime logs and temporary files
 *.log
@@ -13,22 +17,33 @@ yarn-debug.log*
 yarn-error.log*
 *.tmp
 *.bak
+*.swp
+*.swo
+crash*.json
+error*.json
 
 # Application State & Local Data (Privacy)
+# These files contain user-specific runtime data and must NEVER be committed
 config.json
 portable.dat
 WireTuneData/
-backups/Test-Adapter/
-diagnostics/wiretune-log-*.json
+backups/
+profiles/
+diagnostics/
 
 # Build outputs and intermediate binaries
 src-desktop/bin/
 src-desktop/obj/
 *.pdb
 Microsoft.Web.WebView2.*.xml
+publish/
 
-# Media composition source files (kept local)
+# Developer tool artifacts (kept local, never commit)
+.cache/
+.hyperframes/
 intro/
+tmp/
+temp/
 
 # IDE & OS files
 .vscode/
@@ -40,3 +55,5 @@ intro/
 *.sln.docstates
 .DS_Store
 Thumbs.db
+desktop.ini
+$RECYCLE.BIN/

@@ -19,14 +19,8 @@ class DiagnosticTool {
       osType: os.type(),
       osRelease: os.release(),
       osPlatform: os.platform(),
-      osVersion: os.version ? os.version() : os.release(),
       arch: os.arch(),
-      cpus: os.cpus().length,
-      cpuModel: os.cpus()[0]?.model || 'Unknown',
-      totalMemoryMb: Math.round(os.totalmem() / 1024 / 1024),
-      freeMemoryMb: Math.round(os.freemem() / 1024 / 1024),
-      nodeVersion: process.version,
-      uptimeHours: (os.uptime() / 3600).toFixed(1),
+      runtime: `Node.js ${process.version}`,
       privacyMode: 'Offline Strictly Local'
     };
   }
