@@ -143,14 +143,14 @@ class WireTuneApp {
       badge?.classList.remove('standard');
       badge?.classList.add('elevated');
       if (dot) dot.className = 'status-dot online';
-      if (text) text.textContent = 'Administrator';
+      if (text) text.textContent = window.i18n ? window.i18n.t('statusAdminElevated') : 'Administrator';
       if (role) role.textContent = 'Elevated';
       if (restartBtn) restartBtn.style.display = 'none';
     } else {
       badge?.classList.remove('elevated');
       badge?.classList.add('standard');
       if (dot) dot.className = 'status-dot warning';
-      if (text) text.textContent = 'Standard User';
+      if (text) text.textContent = window.i18n ? window.i18n.t('statusAdminRequired') : 'Standard User';
       if (role) role.textContent = 'Limited';
       if (restartBtn) restartBtn.style.display = 'flex';
     }
@@ -161,6 +161,7 @@ class WireTuneApp {
     const settingsSelect = document.getElementById('settingsLangSelect');
     if (!window.i18n) return;
     const langs = window.i18n.availableLanguages || { en: 'English', pl: 'Polski' };
+    const curLang = this.state.config.language || 'en';
 
     const populate = (sel) => {
       if (!sel) return;
@@ -169,15 +170,37 @@ class WireTuneApp {
         const opt = document.createElement('option');
         opt.value = code;
         opt.textContent = name;
-        if (code === (this.state.config.language || 'en')) {
+        if (code === curLang) {
           opt.selected = true;
         }
         sel.appendChild(opt);
       }
+      sel.value = curLang;
     };
 
     populate(topSelect);
     populate(settingsSelect);
+  }
+
+  async changeLanguage(langCode) {
+    if (!langCode || !window.i18n) return;
+    this.state.config.language = langCode;
+    await window.i18n.setLanguage(langCode);
+
+    // Sync dropdown values
+    const topSelect = document.getElementById('langSelectTop');
+    if (topSelect) topSelect.value = langCode;
+    const settingsSelect = document.getElementById('settingsLangSelect');
+    if (settingsSelect) settingsSelect.value = langCode;
+
+    // Save to configuration backend
+    await WireTuneApi.updateConfig({ language: langCode }).catch(() => {});
+
+    // Re-apply translations
+    window.i18n.translateDOM();
+    this.updateAdminStatusUI();
+    this.renderAdapterSummary();
+    this.selectProfile(this.state.currentProfile || 'gaming');
   }
 
   async loadAdapters() {
@@ -241,7 +264,9 @@ class WireTuneApp {
     const liveText = document.getElementById('dashboardLiveStatusText');
     if (liveBadge && liveText) {
       liveBadge.className = `hero-pill ${adp.connected ? 'status-online' : 'status-offline'}`;
-      liveText.textContent = adp.connected ? 'Connected' : 'Disconnected';
+      liveText.textContent = window.i18n
+        ? window.i18n.t(adp.connected ? 'connected' : 'disconnected')
+        : (adp.connected ? 'Connected' : 'Disconnected');
     }
 
     const chipMedia = document.getElementById('dashboardChipMedia');
@@ -259,14 +284,16 @@ class WireTuneApp {
     // 2. Top bar selected adapter indicator
     const topLabel = document.getElementById('topSelectedAdapterLabel');
     if (topLabel) {
-      topLabel.textContent = adp.name || 'Change Adapter';
+      topLabel.textContent = adp.name || (window.i18n ? window.i18n.t('adapterLabel') : 'Change Adapter');
     }
 
     // 3. Overview cards
     const ovValAdapter = document.getElementById('ovValAdapter');
     const ovSubAdapter = document.getElementById('ovSubAdapter');
     if (ovValAdapter) {
-      ovValAdapter.textContent = adp.connected ? 'Connected' : 'Disconnected';
+      ovValAdapter.textContent = window.i18n
+        ? window.i18n.t(adp.connected ? 'connected' : 'disconnected')
+        : (adp.connected ? 'Connected' : 'Disconnected');
       ovValAdapter.style.color = adp.connected ? 'var(--color-success)' : 'var(--color-danger)';
     }
     if (ovSubAdapter) {
@@ -359,21 +386,21 @@ class WireTuneApp {
       tab.classList.toggle('active', tab.getAttribute('data-profile') === profileId);
     });
 
-    // Update hero badge and overview card
-    const badgeMap = {
-      gaming: 'Gaming Profile',
-      streaming: 'Streaming Profile',
-      balanced: 'Balanced Profile',
-      maxperf: 'Max Performance',
-      custom: 'Custom Profile'
+    const keyMap = {
+      gaming: 'profileGaming',
+      streaming: 'profileStreaming',
+      balanced: 'profileBalanced',
+      maxperf: 'profileMaxPerf',
+      custom: 'profileCustom'
     };
-    const title = badgeMap[profileId] || 'Gaming Profile';
+    const key = keyMap[profileId] || 'profileGaming';
+    const localized = window.i18n ? window.i18n.t(key) : 'Gaming';
     
     const heroBadge = document.getElementById('heroActiveProfileBadge');
-    if (heroBadge) heroBadge.textContent = title;
+    if (heroBadge) heroBadge.textContent = localized;
 
     const ovVal = document.getElementById('ovValProfile');
-    if (ovVal) ovVal.textContent = title.replace(' Profile', '');
+    if (ovVal) ovVal.textContent = localized.split('(')[0].replace(' Profile', '').trim();
   }
 
   // ==========================================
@@ -907,19 +934,15 @@ class WireTuneApp {
     // 13. Language selector changes
     const langTop = document.getElementById('langSelectTop');
     if (langTop) {
-      langTop.onchange = async (e) => {
-        if (window.i18n) await window.i18n.setLanguage(e.target.value);
-        await WireTuneApi.updateConfig({ language: e.target.value }).catch(() => {});
-        this.populateLanguageSelectors();
+      langTop.onchange = (e) => {
+        this.changeLanguage(e.target.value);
       };
     }
 
     const langSettings = document.getElementById('settingsLangSelect');
     if (langSettings) {
-      langSettings.onchange = async (e) => {
-        if (window.i18n) await window.i18n.setLanguage(e.target.value);
-        await WireTuneApi.updateConfig({ language: e.target.value }).catch(() => {});
-        this.populateLanguageSelectors();
+      langSettings.onchange = (e) => {
+        this.changeLanguage(e.target.value);
       };
     }
 
@@ -950,8 +973,15 @@ class WireTuneApp {
   }
 }
 
-// Instantiate and start app on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+// Instantiate and start app on DOM ready with interactive fallback
+function bootWireTune() {
+  if (window.app) return;
   window.app = new WireTuneApp();
   window.app.init();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootWireTune);
+} else {
+  bootWireTune();
+}

@@ -78,7 +78,8 @@ function serveStatic(res, filePath) {
     }
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      'Pragma': 'no-cache'
     });
     res.end(content);
   });

@@ -55,8 +55,23 @@ class I18nClient {
     const elements = root.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (key) {
-        el.textContent = this.t(key);
+      if (!key) return;
+      const translated = this.t(key);
+      const svg = el.querySelector('svg');
+      if (svg) {
+        const textSpan = el.querySelector('span[data-i18n]') || el.querySelector('.btn-text');
+        if (textSpan) {
+          textSpan.textContent = translated;
+        } else {
+          for (let node of el.childNodes) {
+            if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {
+              node.nodeValue = ' ' + translated.trim();
+              break;
+            }
+          }
+        }
+      } else {
+        el.textContent = translated;
       }
     });
 
