@@ -9,6 +9,13 @@ if %errorlevel% neq 0 (
   exit /b
 )
 
+where node >nul 2>&1
+if %errorlevel% neq 0 (
+  if exist "C:\node-js\node.exe" (
+    set "PATH=C:\node-js;%PATH%"
+  )
+)
+
 echo Running WireTune with Administrator privileges...
 if exist WireTune.exe (
   start "" "WireTune.exe"

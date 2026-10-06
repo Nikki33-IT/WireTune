@@ -21,6 +21,7 @@
     <DebugSymbols>false</DebugSymbols>
     <PathMap>$(MSBuildThisFileDirectory)=/_</PathMap>
     <Deterministic>true</Deterministic>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
 

@@ -17,7 +17,7 @@ class PlatformBridge {
       osType: os.type(),
       osRelease: os.release(),
       arch: os.arch(),
-      hostname: os.hostname(),
+      hostname: 'localhost',
       uptime: os.uptime()
     };
   }

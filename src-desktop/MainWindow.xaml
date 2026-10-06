@@ -9,8 +9,7 @@
         Height="760" Width="1120"
         MinHeight="620" MinWidth="860"
         WindowStartupLocation="CenterScreen"
-        Background="#0f1117"
-        Icon="icon.ico">
+        Background="#0f1117">
     <Grid>
         <wv2:WebView2 Name="webView" />
         <Border Name="loadingOverlay" Background="#0f1117" Visibility="Visible">
