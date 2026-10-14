@@ -14,19 +14,19 @@
 </p>
 
 <p align="center">
-  <b>Minimalizacja opóźnień (jitter & ping) • Niskopoziomowy tuning właściwości NDIS • Bezpieczne migawki 1-Click Restore • Zero telemetrii</b>
+  <b>Minimize packet jitter • Hardware-aware NDIS driver tuning • 1-Click snapshot recovery • Zero telemetry</b>
 </p>
 
 <p align="center">
-  <a href="#-demo-w-akcji">Demo w Akcji</a> •
-  <a href="#-kluczowe-mozliwosci">Kluczowe Możliwości</a> •
-  <a href="#-wiretune-vs-tradycyjne-skrypty-i-tweakery">Porównanie</a> •
-  <a href="#-profile-optymalizacji">Profile</a> •
-  <a href="#-zaawansowany-driver-tuning">Tuning NDIS</a> •
-  <a href="#-benchmark-dns">Benchmark DNS</a> •
-  <a href="#-jak-to-dziala-architektura">Architektura</a> •
-  <a href="#-prywatnosc-i-bezpieczenstwo">Prywatność</a> •
-  <a href="#-instalacja--uruchomienie">Instalacja</a> •
+  <a href="#-watch-wiretune-in-action">Demo</a> •
+  <a href="#-key-capabilities">Key Capabilities</a> •
+  <a href="#-wiretune-vs-traditional-tweakers">Comparison</a> •
+  <a href="#-optimization-profiles">Profiles</a> •
+  <a href="#-driver-properties-deep-dive">Driver Deep Dive</a> •
+  <a href="#-dns-benchmark-center">DNS Benchmark</a> •
+  <a href="#-how-it-works-architecture">Architecture</a> •
+  <a href="#-privacy-by-design">Privacy</a> •
+  <a href="#-quick-start--installation">Installation</a> •
   <a href="#-faq">FAQ</a>
 </p>
 
@@ -34,19 +34,19 @@
 
 ---
 
-## 🎥 Demo w Akcji
+## 🎥 Watch WireTune in Action
 
 <div align="center">
   <img src="docs/images/wiretune-preview.gif" alt="WireTune Preview" width="860" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);" />
   <br /><br />
   <p>
-    <em>Błyskawiczna, świadoma sprzętowo optymalizacja parametrów sieciowych z pełnym bezpieczeństwem i natychmiastowym cofaniem zmian.</em>
+    <em>Ultra-fast, hardware-aware network parameter tuning with verified driver safety, instant undo, and zero telemetry.</em>
   </p>
 </div>
 
 ---
 
-## 🖥️ Główny Panel (Hero Dashboard)
+## 🖥️ Hero Dashboard
 
 <div align="center">
   <img src="docs/images/wiretune-dashboard.png" alt="WireTune Dashboard" width="100%" style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);" />
@@ -54,279 +54,376 @@
 
 ---
 
-## ✨ Przegląd Modułów WireTune
+## ✨ WireTune at a Glance
 
-WireTune pozwala na precyzyjne, bezpieczne i w 100% odwracalne dostosowanie parametrów karty sieciowej oraz stosu TCP/IP.
+WireTune empowers you to fine-tune your network adapter's low-level driver properties safely, transparently, and reversibly.
 
-| Silnik Optymalizacji (Engine) | Szczegóły Karty Sieciowej (Adapter) |
+| Optimization Engine | Adapter Intelligence |
 | :---: | :---: |
 | ![Optimization Engine](docs/images/wiretune-optimization.png) | ![Adapter Details](docs/images/wiretune-adapter.png) |
-| *Selektywne strojenie rejestru sterowników z wyjaśnieniami technicznymi "Dlaczego to ustawienie?".* | *Wykrywanie fizycznych interfejsów, negocjacja łącza, MAC oraz stan mediów.* |
+| *Selective driver property tuning with contextual "Why this setting?" explanations.* | *Physical network card selector with live link negotiation, MAC status, and media state.* |
 
-| Centrum Benchmarku Sieci | Benchmark Resolverów DNS |
+| Network Benchmark Center | DNS Resolver Benchmark |
 | :---: | :---: |
 | ![Benchmark Center](docs/images/wiretune-benchmark.png) | ![DNS Benchmark](docs/images/wiretune-dns.png) |
-| *Testy pingu, fluktuacji (jitter) i stabilności pakietów z uczciwym porównaniem Przed / Po.* | *Pomiary opóźnień do czołowych resolverów DNS z ręcznym aplikowaniem 1 kliknięciem.* |
+| *Real-time ping, jitter, and link speed testing with honest Before vs After comparisons.* | *Direct latency probes across top public resolvers with 1-click manual apply.* |
 
-| Diagnostyka Sprzętowa | Własne Profile Karty |
+| Hardware Diagnostics | Adapter Custom Profiles |
 | :---: | :---: |
 | ![Diagnostics](docs/images/wiretune-diagnostics.png) | ![Profiles](docs/images/wiretune-profiles.png) |
-| *Weryfikacja zdrowia połączenia i bezpośredni odczyt parametrów NDIS.* | *Gotowe presety dla Graczy, Streamerów oraz konfiguracje użytkownika.* |
+| *6-point connection health verification and raw hardware/driver NDIS telemetry.* | *Tailored presets for Gaming, Streaming, Balanced, and Multi-Gigabit Performance.* |
 
-| Ustawienia & Tryb Przenośny | Tryb Ciemny & Bezpieczna Aplikacja |
+| Application Settings | Elevated Dark Mode Experience |
 | :---: | :---: |
 | ![Settings](docs/images/wiretune-settings.png) | ![Elevated Dark Mode](docs/images/wiretune-dark-mode.png) |
-| *Wybór motywu Fluent, 30 języków oraz przełącznik Portable Mode (`./WireTuneData/`).* | *Wielostopniowy podgląd zmian z automatycznym tworzeniem kopii zapasowej JSON.* |
+| *Comprehensive preferences: Theme, 30 Languages, Reduced Motion, and Portable storage mode.* | *Multi-step animated pre-flight backup snapshot and verified optimization progress.* |
 
 ---
 
-## 🎯 Kluczowe Możliwości
+## 🎯 Key Capabilities
 
-- 🚀 **Tuning Stosu Sieciowego & NDIS**: Optymalizacja parametrów karty na poziomie sprzętowym (Interrupt Moderation, RSS, EEE, Rx/Tx Descriptors, Checksum Offloading).
-- 🎮 **Dedykowane Profile Konfiguracyjne**:
-  - **Competitive Gaming**: Drastyczna redukcja fluktuacji opóźnień (jitter), wyłączenie uśpienia EEE, obniżenie interwałów przerwań procesora.
-  - **Streaming & Content**: Zwiększona przepustowość, stabilne buforowanie TCP i akceleracja sprzętowa odciążeń pakietowych.
-  - **Balanced / Default**: Zrównoważona praca na co dzień z zachowaniem energooszczędności.
-  - **Maximum Performance**: Agresywne strojenie kolejek dla łączy gigabitowych i multi-gigabitowych (2.5G / 10G).
-  - **Custom Profile Manager**: Możliwość tworzenia, eksportowania i importowania własnych profili ustawień.
-- 🧪 **Rzetelny Benchmark Przed / Po**: Prawdziwe testy pingu do bramy/serwerów, pomiar rozrzutu opóźnień (jitter) oraz stabilności bez marketingowego zawyżania wyników.
-- 🌐 **Benchmark Serwerów DNS**: Bezpośrednie testy latencji zapytań UDP do zaufanych resolverów (Cloudflare, Quad9, Google, AdGuard, OpenDNS, Mullvad) z 1-kliknięciowym zastosowaniem lub powrotem do DHCP.
-- 💾 **Automatyczne Kopie Bezpieczeństwa (Pre-Flight Snapshots)**: Przed każdą zmianą WireTune automatycznie zapisuje pełną migawkę stanu sterownika w formacie JSON.
-- ↩ **Błyskawiczny Rollback**: Możliwość natychmiastowego cofnięcia zmian lub przywrócenia fabrycznych wartości sterownika producenta.
-- ❓ **Przejrzystość ("Dlaczego to ustawienie?")**: Szczegółowe podpowiedzi techniczne wyjaśniające wpływ każdego parametru na sprzęt i CPU.
-- 🔒 **100% Prywatności & Działanie Offline**: Zero telemetrii, zero zewnętrznych serwerów analitycznych, bezpieczny proces działający wyłącznie na `127.0.0.1`.
-- 📦 **Prawdziwy Tryb Portable**: Obsługa katalogu `./WireTuneData/` — brak wpisów do rejestru systemowego, gotowy do uruchomienia z pendrive'a.
-- 🌍 **Obsługa 30 Języków**: Dynamiczna zmiana języka w czasie rzeczywistym z pełnym wsparciem dla układów RTL.
+- 🚀 **Hardware-Aware NDIS & TCP/IP Tuning**: Fine-tunes hardware properties (Interrupt Moderation, RSS, EEE, Rx/Tx Descriptors, Hardware Offloading) directly through official Windows NetAdapter APIs.
+- 🎮 **Dedicated Optimization Profiles**:
+  - **Competitive Gaming**: Minimizes packet jitter and input delay, disables energy-saving power drops, lowers CPU interrupt intervals.
+  - **Streaming & Content Creation**: Boosts sustained throughput, expands TCP window sizes, stabilizes queue pacing.
+  - **Balanced / Default**: Safe, stable everyday performance with optimal energy efficiency.
+  - **Maximum Performance**: Aggressive queue sizing and MTU framing for multi-gigabit (2.5G / 10G) networks.
+  - **Custom Profile Manager**: Build, label, save, export, and import your own configuration presets.
+- 🧪 **Honest Before / After Network Benchmark**: Measures true round-trip ping, jitter variation, packet stability, and negotiated link speed without artificial inflation.
+- 🌐 **DNS Benchmark Center**: Direct UDP latency and reliability testing across major public resolvers (Cloudflare, Quad9, Google, AdGuard, OpenDNS, Mullvad) with 1-click manual apply or reset to DHCP.
+- 💾 **Automated Pre-Flight Snapshots**: Before making any modification, WireTune captures an uncompressed local JSON backup of your current configuration.
+- ↩ **Instant 1-Click Rollback**: Restore any previous configuration state or reset back to official manufacturer defaults at any time.
+- ❓ **"Why this setting?" Transparency**: In-depth in-app technical tooltips explaining the hardware role, recommended values, benefits, and trade-offs for every property.
+- 🔒 **100% Privacy & Offline Execution**: Zero telemetry, zero analytics, zero external web requests. Strictly binds to loopback `127.0.0.1`.
+- 📦 **True Portable Mode**: Run completely self-contained from `./WireTuneData/` without touching `%APPDATA%` or Windows Registry.
+- 🌍 **30-Language Localization**: Full dynamic real-time language switching with native Right-to-Left (RTL) support.
 
 ---
 
-## ⚖️ WireTune vs. Tradycyjne Skrypty i "Tweakery"
+## ⚖️ WireTune vs. Traditional "Tweakers"
 
-Większość "optymalizatorów" z forów i filmików na YouTube to niebezpieczne skrypty `.bat` lub pliki `.reg`, które na ślepo wprowadzają wartości do rejestru, wyłączają zapory ogniowe lub psują Windows Defender. 
+Most downloadable network "optimizers" and YouTube batch scripts are dangerous black boxes: they write blind registry tweaks, disable Windows Defender, corrupt firewall rules, and apply identical static settings across completely incompatible hardware.
 
-**WireTune działa w sposób bezpieczny i profesjonalny:**
+**WireTune takes a safe, engineering-first approach:**
 
-| Cecha / Funkcjonalność | ⚠️ Zwykłe Skrypty & "Tweakery" | 🛡️ WireTune |
+| Feature / Standard | ⚠️ Typical "Tweakers" & Reg Scripts | 🛡️ WireTune |
 | :--- | :--- | :--- |
-| **Weryfikacja Sterownika** | ❌ Na ślepo wpisuje klucze do rejestru bez sprawdzenia karty | ✅ Odpytuje sterownik o dozwolone wartości (`ValidDisplayValues`) |
-| **Kopia Zapasowa Przed Zmianą** | ❌ Brak lub zawodny punkt przywracania systemu | ✅ Atomowa migawka JSON zapisywana przed każdą modyfikacją |
-| **Możliwość Cofnięcia (Undo)** | ❌ Niemożliwe lub wymaga ręcznej reinstalacji sterownika | ✅ 1 kliknięcie cofa do dokładnego stanu sprzed optymalizacji |
-| **Bezpieczeństwo Systemu** | ❌ Często wyłącza Windows Defender, firewall lub usługi | ✅ Zero ingerencji w antywirusa, firewall, proxy czy plik hosts |
-| **Prywatność i Telemetria** | ❌ Bywa nośnikiem reklam, adware lub skryptów śledzących | ✅ 100% offline, zerowa telemetria, lokalne gniazdo loopback |
-| **Sposób Aplikowania Zmian** | ❌ Wielokrotne restartowanie karty sieciowej dla każdego klucza | ✅ Zgrupowany, zoptymalizowany skrypt PowerShell (1–2 sekundy) |
-| **Wyjaśnienia Techniczne** | ❌ Ukryte, nieudokumentowane manipulacje rejestrem | ✅ "Dlaczego to ustawienie?" – pełna transparentność wpływu na CPU |
-| **Obsługa DNS** | ❌ Podmienia DNS w tle bez zgody użytkownika | ✅ Transparentny benchmark; zmiana tylko na wyraźne żądanie |
-| **Świadomość Sprzętowa** | ❌ Traktuje Intel, Realtek, Marvell i Wi-Fi jednakowo | ✅ Rozpoznaje producenta, typ medium i unikalne możliwości karty |
+| **Driver Awareness** | ❌ Blind hardcoded values; breaks when driver ignores them | ✅ Probes driver enum limits (`ValidDisplayValues`) before applying |
+| **Pre-Flight Backup** | ❌ None or incomplete system restore point | ✅ Automated local JSON snapshot created prior to any change |
+| **Rollback Capability** | ❌ Difficult or impossible to restore exact original state | ✅ Instant 1-click rollback to snapshot or factory defaults |
+| **System Security** | ❌ Disables Windows Defender, firewall, or security services | ✅ Zero tampering with Defender, firewall, proxies, or hosts file |
+| **Telemetry & Privacy** | ❌ Often bundles adware, analytics, or background telemetry | ✅ 100% offline, zero telemetry, zero analytics, strictly local |
+| **Batch Property Apply** | ❌ Repeated adapter disconnects for each individual property | ✅ High-performance batched PowerShell execution pipeline (1–2s) |
+| **Transparency** | ❌ Opaque `.bat` / `.reg` scripts with zero documentation | ✅ "Why this setting?" tooltips explaining trade-offs and vendor quirks |
+| **DNS Management** | ❌ Silently overrides DNS in the background | ✅ Transparent benchmark; manual user opt-in only with 1-click restore |
+| **Hardware Scope** | ❌ Treats Intel, Realtek, Marvell, and Wi-Fi identically | ✅ Differentiates physical adapters, vendor features, and media types |
 
 ---
 
-## 🎛️ Profile Optymalizacji
+## 🎛️ Optimization Profiles
 
-| Profil | Dla Kogo? | Cel Główny | Kluczowe Modyfikacje |
+WireTune includes five rigorously tested profiles designed for distinct usage scenarios:
+
+| Profile | Target Audience | Primary Focus | Key Driver Adjustments |
 | :--- | :--- | :--- | :--- |
-| **Balanced** | Codzienna praca i internet | Stabilność & Oszczędność Energii | Bezpieczne ustawienia domyślne, zrównoważona moderacja przerwań. |
-| **Gaming** | Gracze turniejowi (FPS / MOBA) | Najniższy Ping & Minimalny Jitter | Wyłączenie Energy Efficient Ethernet (EEE), minimalizacja opóźnień przerwań, dedykowane kolejki RSS. |
-| **Streaming** | Twórcy treści & Streaming 4K | Płynna Przepustowość & Zero Dropów | Powiększone okna buforów TCP, aktywne odciążenia sprzętowe LSO, stabilizacja bufora. |
-| **Maximum Performance** | Łącza Multi-Gigabit (2.5G / 10G) | Maksymalny Transfer i Wydajność ASIC | Zwiększenie deskryptorów Rx/Tx, obsługa ramek Jumbo, agresywny hardware offload. |
-| **Custom** | Zaawansowani administratorzy | Pełna Kontrola Manualna | Indywidualne włączanie/wyłączanie dowolnej właściwości udostępnianej przez sterownik. |
+| **Balanced** | Daily Work & General Browsing | Stability & Power Efficiency | Safe vendor defaults, balanced interrupt moderation, standard descriptor buffers. |
+| **Gaming** | Competitive Multiplayer (FPS/MOBA) | Lowest Latency & Minimal Jitter | Disables Energy Efficient Ethernet (EEE), minimizes interrupt moderation, optimizes RSS CPU queues. |
+| **Streaming** | Streamers & Content Creators | Steady Throughput & Buffer Health | Expands TCP buffer windows, enables hardware checksum offloading, stabilizes queue pacing. |
+| **Maximum Performance** | Multi-Gigabit (2.5G/10G) & High-Speed LAN | Peak Bandwidth & Descriptors | Maximizes Rx/Tx descriptors, enables jumbo frames (where supported), aggressive hardware offloading. |
+| **Custom** | Power Users & Network Admins | Granular Manual Control | Toggle and tune individual driver-exposed properties with immediate validation. |
 
 ---
 
-## 🔬 Zaawansowany Driver Tuning
+## 🔬 Driver Properties Deep Dive
 
-WireTune komunikuje się bezpośrednio z podsystemem NDIS oraz modułem `NetAdapter` systemu Windows:
+WireTune configures the low-level properties provided by official network card drivers (Intel, Realtek, Broadcom, Marvell/Aquantia, Qualcomm):
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        KARTA SIECIOWA (FIZYCZNA)                       │
+│                        PHYSICAL NETWORK ADAPTER                        │
 ├──────────────────────────────────┬─────────────────────────────────────┤
-│  ⚡ Interrupt Moderation (IM)    │  Kontrola częstotliwości przerwań   │
-│  🍃 Energy Efficient Ethernet    │  Zapobieganie usypianiu łącza PHY   │
-│  🔀 Receive Side Scaling (RSS)   │  Rozkład obsługi pakietów na rdzenie│
-│  📦 Rx / Tx Buffer Descriptors   │  Eliminacja utraty pakietów w piku  │
-│  🚀 Large Send Offload (LSO v2)  │  Segmentacja pakietów na chipsecie  │
-│  🛡️ TCP/UDP Checksum Offload     │  Sprzętowe liczenie sum kontrolnych │
-│  🌊 Flow Control (Sterowanie)    │  Kontrola zatorów bufora przełącznika│
-│  🐘 Jumbo Frame Packets          │  Większe MTU w sieciach lokalnych   │
+│  ⚡ Interrupt Moderation (IM)    │  Controls packet batching to CPU   │
+│  🍃 Energy Efficient Ethernet    │  Prevents sleep/wake latency drops  │
+│  🔀 Receive Side Scaling (RSS)   │  Distributes network load over CPUs │
+│  📦 Rx / Tx Buffer Descriptors   │  Prevents packet drops under load   │
+│  🚀 Large Send Offload (LSO v2)  │  Offloads segmentation to NIC ASIC  │
+│  🛡️ TCP/UDP Checksum Offload     │  Calculates checksums in hardware   │
+│  🌊 Flow Control (Rx & Tx)       │  Regulates congestion & pauses      │
+│  🐘 Jumbo Packet Framing         │  Increases MTU payload for gigabit  │
 └──────────────────────────────────┴─────────────────────────────────────┘
 ```
 
-- **Interrupt Moderation (Moderacja Przerwań)**: Zapobiega zalewaniu procesora przerwaniami przy każdym pakiecie. Dla gamingu obniżenie wartości zmniejsza opóźnienie reakcji, natomiast dla transferów masowych redukuje obciążenie CPU.
-- **Energy Efficient Ethernet (EEE / Green Ethernet)**: Usypia tor transmisyjny karty przy braku ruchu. Wyłączenie EEE zapobiega mikro-przycięciom i opóźnieniom wzbudzania łącza.
-- **Receive Side Scaling (RSS)**: Rozdziela przetwarzanie ruchu sieciowego na wiele rdzeni CPU, zapobiegając przeciążeniu pierwszego rdzenia (Core 0).
-- **Deskryptory Rx / Tx**: Pamięć podręczna na samej karcie sieciowej. Wyższe wartości zapobiegają gubieniu pakietów podczas gwałtownych obciążeń.
-- **Odciążenia Sprzętowe (Checksum / LSO)**: Przenoszą kosztowne obliczenia sum kontrolnych oraz podziału dużych ramek z procesora bezpośrednio na układ scalony karty sieciowej.
+- **Interrupt Moderation (IM)**: Regulates how frequently the network adapter interrupts the CPU to service packets. Lowering IM reduces packet response time for competitive gaming, while balanced IM reduces CPU load during sustained downloads.
+- **Energy Efficient Ethernet (EEE / Green Ethernet)**: Puts physical PHY circuitry into low-power states when traffic is low. Disabling EEE prevents micro-stutters and wake-up latency spikes.
+- **Receive Side Scaling (RSS)**: Distributes inbound packet processing across multiple CPU cores rather than overloading Core 0.
+- **Receive & Transmit Buffers (Rx/Tx Descriptors)**: Allocates on-adapter memory buffer queues. Higher values prevent packet loss during intense burst traffic.
+- **Hardware Checksum & Large Send Offload (LSO)**: Offloads packet segmentation and checksum calculation from the central processor directly onto the network card ASIC.
+- **Flow Control**: Controls IEEE 802.3x pause frames. Disabling it in competitive gaming prevents queuing delays caused by switch flow control.
 
 ---
 
-## 🌐 Benchmark DNS
+## 🌐 DNS Benchmark Center
 
-WireTune pozwala zmierzyć faktyczną szybkość odpowiedzi serwerów DNS bezpośrednio z Twojego komputera za pomocą standardowych zapytań UDP:
+WireTune includes an independent DNS benchmarking engine that tests round-trip response time directly to resolver IPs via UDP:
 
-| Dostawca DNS | Adres Podstawowy | Adres Zapasowy | Charakterystyka |
+| Resolver | Primary IP | Secondary IP | Key Features |
 | :--- | :--- | :--- | :--- |
-| **Cloudflare** | `1.1.1.1` | `1.0.0.1` | Ekstremalnie szybki Anycast, rygorystyczna polityka braku logów |
-| **Quad9** | `9.9.9.9` | `149.112.112.112` | Automatyczne blokowanie domen ze złośliwym oprogramowaniem |
-| **Google Public DNS** | `8.8.8.8` | `8.8.4.4` | Najwyższa globalna dostępność i niezawodność infrastruktury |
-| **AdGuard DNS** | `94.140.14.14` | `94.140.15.15` | Ochrona przed reklamami, trackerami i domenami śledzącymi |
-| **OpenDNS** | `208.67.222.222` | `208.67.220.220` | Stabilny resolver klasy korporacyjnej |
-| **Mullvad** | `194.242.2.2` | `194.242.2.3` | Skupiony na prywatności, brak jakiejkolwiek analizy zapytań |
+| **Cloudflare** | `1.1.1.1` | `1.0.0.1` | Ultra-fast Anycast network, strict no-logs policy |
+| **Quad9** | `9.9.9.9` | `149.112.112.112` | Built-in threat intelligence blocking malware and phishing |
+| **Google Public DNS** | `8.8.8.8` | `8.8.4.4` | Massive worldwide capacity and reliable global routing |
+| **AdGuard DNS** | `94.140.14.14` | `94.140.15.15` | Blocks ads, telemetry, and tracking servers |
+| **OpenDNS (Cisco)** | `208.67.222.222` | `208.67.220.220` | Enterprise-grade availability and filtering |
+| **Mullvad** | `194.242.2.2` | `194.242.2.3` | Privacy-focused, zero data logging or telemetry |
 
 > [!IMPORTANT]
-> **Pełna Kontrola**: WireTune **nigdy** nie zmienia konfiguracji DNS bez Twojej zgody. Wybór serwera należy do Ciebie, a przywrócenie automatycznego DNS (DHCP) odbywa się jednym kliknięciem.
+> **No Silent Overwrites**: WireTune **never** modifies your DNS settings without your explicit click. You decide whether to apply a resolver, and you can reset back to automatic DHCP at any moment.
 
 ---
 
-## 🔄 Jak to Działa? (Architektura)
+## 🔄 How It Works (Architecture)
+
+WireTune follows an atomic, safe, and hardware-verified execution pipeline:
 
 ```
 ┌──────────────────────────────┐
-│     1. Wykrycie Sprzętu      │  → Odczyt fizycznych kart LAN i Wi-Fi przez NDIS
+│     1. Enumerate Hardware    │  → Discovers physical adapters via NetAdapter
 └──────────────┬───────────────┘
                │
 ┌──────────────▼───────────────┐
-│     2. Badanie Sterownika    │  → Odczyt właściwości oraz puli ValidDisplayValues
+│     2. Probe Driver Limits   │  → Reads properties & ValidDisplayValues
 └──────────────┬───────────────┘
                │
 ┌──────────────▼───────────────┐
-│     3. Migawka JSON Backup   │  → Zapis oryginalnego stanu do ./backups/
+│     3. Capture JSON Snapshot │  → Saves pre-change state to ./backups/
 └──────────────┬───────────────┘
                │
 ┌──────────────▼───────────────┐
-│     4. Filtr Zgodności       │  → Odrzucenie opcji nieobsługiwanych przez sterownik
+│     4. Filter Targets        │  → Excludes unsupported hardware keywords
 └──────────────┬───────────────┘
                │
 ┌──────────────▼───────────────┐
-│     5. Skrypt Zbiorczy       │  → Aplikacja wszystkich zmian w 1 wywołaniu PowerShell
+│     5. Batched Execution     │  → Applies all settings in a single PowerShell job
 └──────────────┬───────────────┘
                │
 ┌──────────────▼───────────────┐
-│     6. Weryfikacja Sprzętowa │  → Potwierdzenie przyjęcia parametrów przez kartę
+│     6. Verification Probe    │  → Re-queries driver to confirm applied values
 └──────────────┬───────────────┘
                │
                ▼
-   [ Sukces • Gotowy Rollback ]
+       [ Success & Undo Ready ]
 ```
 
 ---
 
-## 🔒 Prywatność i Bezpieczeństwo
+## 🔒 Privacy by Design
 
-Gwarancje bezpieczeństwa WireTune:
-- **Zero telemetrii**: Brak zewnętrznych bibliotek analitycznych (Google Analytics, Sentry, Mixpanel, itp.).
-- **Brak połączeń wychodzących**: Aplikacja komunikuje się wyłącznie lokalnie na adresie `127.0.0.1`.
-- **Brak rejestracji**: Brak kont, logowania czy wymogu podawania adresu e-mail.
-- **Pełna przejrzystość**: Wszystkie kopie zapasowe to czytelne pliki JSON na Twoim dysku.
-- Zapoznaj się z pełną [Polityką Prywatności (PRIVACY.md)](PRIVACY.md).
+WireTune is built on the fundamental principle that system utilities should **never** monitor their users.
+
+```
+┌────────────────────────────────────────────────────────┐
+│               WIRE TUNE PRIVACY GUARANTEE               │
+├────────────────────────────────────────────────────────┤
+│  ✓  No telemetry                                       │
+│  ✓  No analytics (Google Analytics, PostHog, Mixpanel) │
+│  ✓  No tracking scripts or beacons                     │
+│  ✓  No advertising or sponsored links                  │
+│  ✓  No account registration required                   │
+│  ✓  No cloud backend or remote servers                 │
+│  ✓  No hidden background data collection               │
+│  ✓  No automatic crash or log uploads                  │
+│  ✓  Strict local loopback binding (127.0.0.1 only)    │
+│  ✓  100% offline-capable execution                     │
+└────────────────────────────────────────────────────────┘
+```
+
+> Read our complete [Privacy Policy](PRIVACY.md) for full technical transparency.
 
 ---
 
-## 🛠️ Instalacja & Uruchomienie
+## 🛠️ Quick Start & Installation
 
-### Opcja 1: Wersja Przenośna (Najszybsza)
-1. Pobierz najnowsze wydanie z zakładki [Releases](https://github.com/allynIT/WireTune/releases).
-2. Rozpakuj archiwum w dowolnym folderze lub na pendrive.
-3. Uruchom `WireTune.exe` (lub kliknij prawym przyciskiem `WireTune-Admin.bat` i wybierz **Uruchom jako administrator**).
+### Option 1: Standalone Portable (Recommended)
+1. Download the latest release package from [Releases](https://github.com/allynIT/WireTune/releases).
+2. Extract the archive to any folder or USB flash drive.
+3. Launch `WireTune.exe` (or right-click `WireTune-Admin.bat` and select **Run as administrator**).
 
-### Opcja 2: Uruchomienie ze Źródeł (Node.js)
+### Option 2: Run from Source (Node.js)
 
-#### Wymagania
-- **Windows 10 / 11** (64-bit)
+#### Prerequisites
+- **Windows 10** (Build 1903+) or **Windows 11** (64-bit)
 - **Node.js 18.0+**
 - **PowerShell 5.1+**
+- *(Optional for C# desktop wrapper)*: **.NET 8.0 SDK**
 
+#### Steps
 ```bash
-# 1. Sklonuj repozytorium
+# 1. Clone the repository
 git clone https://github.com/allynIT/WireTune.git
 cd WireTune
 
-# 2. Uruchom zestaw testów automatycznych (15 testów)
+# 2. Run automated test suite (15 unit tests)
 npm test
 
-# 3. Uruchom aplikację
+# 3. Start WireTune in desktop mode
 npm start
 
-# (Opcjonalnie) Skompiluj natywną aplikację WireTune.exe (.NET 8 WebView2)
+# (Optional) Build standalone WireTune.exe (.NET 8 WebView2 wrapper)
 npm run build:exe
 ```
 
 ---
 
-## ❓ FAQ (Najczęściej Zadawane Pytania)
+## 📖 Step-by-Step Usage Guide
+
+1. **Launch WireTune**: Start the app. Click **Restart as Administrator** if prompted to enable hardware writes.
+2. **Select Adapter**: Pick your physical Ethernet or Wi-Fi network card from the top dropdown.
+3. **Choose Profile**: Select an optimization preset (`Gaming`, `Balanced`, `Streaming`, `Maximum Performance`) or choose `Custom`.
+4. **Run Baseline Benchmark**: Open the **Benchmark** tab and click **Run Benchmark** to record your pre-optimization latency and jitter.
+5. **Inspect Properties**: View the **Adapter Details** tab. Click **"Why this setting?"** on any property to see technical explanations.
+6. **Apply Optimization**: Click **Optimize Now**. WireTune automatically creates a local snapshot backup before applying changes.
+7. **Review Audit Report**: Check the **Audit History** tab to inspect exactly what parameters were modified.
+8. **Run Post-Benchmark**: Re-test your connection to compare Before vs After metrics.
+9. **Instant Rollback**: If desired, click **Restore Snapshot** or **Restore Factory Defaults** with a single click.
+
+---
+
+## 🌍 Internationalization & Languages
+
+WireTune includes built-in localization across **30 languages**:
+
+<div align="center">
+
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| 🇬🇧 English (`en`) | 🇵🇱 Polish (`pl`) | 🇩🇪 German (`de`) | 🇫🇷 French (`fr`) | 🇪🇸 Spanish (`es`) |
+| 🇮🇹 Italian (`it`) | 🇵🇹 Portuguese (`pt`) | 🇳🇱 Dutch (`nl`) | 🇷🇺 Russian (`ru`) | 🇺🇦 Ukrainian (`uk`) |
+| 🇨🇳 Chinese Simp (`zh`) | 🇹🇼 Chinese Trad (`zh-TW`) | 🇯🇵 Japanese (`ja`) | 🇰🇷 Korean (`ko`) | 🇸🇦 Arabic (`ar` - RTL) |
+| 🇹🇷 Turkish (`tr`) | 🇻🇳 Vietnamese (`vi`) | 🇹🇭 Thai (`th`) | 🇮🇩 Indonesian (`id`) | 🇨🇿 Czech (`cs`) |
+| 🇸🇰 Slovak (`sk`) | 🇭🇺 Hungarian (`hu`) | 🇷🇴 Romanian (`ro`) | 🇧🇬 Bulgarian (`bg`) | 🇬🇷 Greek (`el`) |
+| 🇸🇪 Swedish (`sv`) | 🇩🇰 Danish (`da`) | 🇳🇴 Norwegian (`no`) | 🇫🇮 Finnish (`fi`) | 🇮🇳 Hindi (`hi`) |
+
+</div>
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
 
 <details>
-<summary><strong>Czy WireTune gwarantuje niższy ping w każdej grze?</strong></summary>
+<summary><strong>Does WireTune guarantee lower ping or faster internet download speeds?</strong></summary>
 <br />
-<strong>Nie ma cudów:</strong> fizycznego dystansu do serwera gry ani parametrów Twojego łącza światłowodowego/radiowego nie da się zmienić oprogramowaniem. WireTune eliminuje natomiast wąskie gardła po stronie komputera i sterownika: zapobiega uśpieniu karty, minimalizuje fluktuacje opóźnień (jitter), usuwa micro-stuttery i optymalizuje obsługę przerwań przez CPU.
+<strong>No software can break the laws of physics:</strong> your physical distance to the game server, your ISP routing, and local line quality dictate baseline ping. WireTune eliminates local bottlenecks in the Windows network stack and network card driver: preventing PHY sleep transitions, eliminating micro-stutters, stabilizing buffer pacing, and minimizing CPU interrupt latency. WireTune provides honest, uninflated measurements.
 </details>
 
 <details>
-<summary><strong>Czy mogę bezpiecznie cofnąć wszystkie zmiany?</strong></summary>
+<summary><strong>Does WireTune collect or transmit any of my data?</strong></summary>
 <br />
-<strong>Tak, w 100%.</strong> Przed każdą zmianą WireTune wykonuje lokalną migawkę JSON. Możesz przywrócić dowolny wcześniejszy stan jednym kliknięciem w zakładce <em>Historia Audytu</em> lub zresetować kartę do ustawień fabrycznych producenta.
+<strong>No.</strong> WireTune has no telemetry, no tracking scripts, no external server infrastructure, and no analytics. It runs 100% locally and binds strictly to <code>127.0.0.1</code>. Read our <a href="PRIVACY.md">Privacy Policy</a> for more details.
 </details>
 
 <details>
-<summary><strong>Dlaczego aplikacja wymaga uprawnień administratora?</strong></summary>
+<summary><strong>Can I undo changes made by WireTune?</strong></summary>
 <br />
-System Windows ze względów bezpieczeństwa blokuje zwykłym użytkownikom możliwość modyfikacji sterowników sprzętowych i stosu sieciowego. Uprawnienia administratora są niezbędne wyłącznie do zapisania zmian w karcie. W trybie zwykłego użytkownika WireTune działa w trybie podglądu (Read-Only).
+<strong>Yes.</strong> WireTune creates an uncompressed local JSON backup snapshot before applying any change. You can roll back to any prior state or restore original factory defaults with a single click.
 </details>
 
 <details>
-<summary><strong>Czy WireTune podmienia sterownik karty sieciowej?</strong></summary>
+<summary><strong>Does WireTune replace my network adapter driver?</strong></summary>
 <br />
-<strong>Nie.</strong> WireTune nie instaluje żadnych niepodpisanych czy obcych sterowników. Konfiguruje jedynie oficjalne właściwości udostępnione przez producenta Twojego chipsetu (Intel, Realtek, Marvell itp.) za pośrednictwem oficjalnego API Windows.
+<strong>No.</strong> WireTune configures the official driver properties provided by your hardware vendor (Intel, Realtek, Marvell, etc.) via official Windows NetAdapter interfaces. It does not install third-party drivers or custom kernel extensions.
 </details>
 
 <details>
-<summary><strong>Dlaczego połączenie na chwilę znika podczas optymalizacji?</strong></summary>
+<summary><strong>Why does my network connection briefly drop during optimization?</strong></summary>
 <br />
-Niektóre kluczowe zmiany sprzętowe (np. zmiana liczby kolejek RSS lub moderacji przerwań) wymagają od systemu Windows 1-2 sekundowej re-inicjalizacji interfejsu sieciowego. Jest to w pełni naturalne zachowanie stosu NDIS.
+When certain advanced driver properties (like interrupt moderation or RSS queues) are altered, the Windows network stack briefly re-initializes the physical NIC interface (typically taking 1–2 seconds). This is standard Windows driver behavior.
+</details>
+
+<details>
+<summary><strong>Why does WireTune require Administrator privileges?</strong></summary>
+<br />
+Standard Windows users are restricted from altering hardware driver configuration and network adapter settings. Administrator privileges are required only when applying optimizations or restoring backups. WireTune can run in read-only preview mode without elevation.
 </details>
 
 ---
 
-## 🗺️ Roadmapa Rozwoju
+## 🔧 Troubleshooting
 
-- [x] Detekcja adapterów fizycznych przez podsystem Windows NetAdapter
-- [x] Dedykowane profile optymalizacyjne (`Gaming`, `Streaming`, `Balanced`, `Maximum Performance`)
-- [x] Atomowy system tworzenia migawek JSON i natychmiastowego rollbacku
-- [x] Centrum Benchmarku Latencji, Jittera i Przepustowości Przed / Po
-- [x] Benchmark Resolverów DNS z ręcznym aplikowaniem
-- [x] Menadżer profili własnych (eksport / import JSON)
-- [x] Transparentne opisy techniczne ("Dlaczego to ustawienie?")
-- [x] Architektura 100% Offline & Zero Telemetrii
-- [x] Tryb Portable Mode (`./WireTuneData/`)
-- [x] 30 wersji językowych z dynamicznym przełączaniem i obsługą RTL
-- [x] Interfejs Windows 11 Fluent Design (Dark & Light Mode)
-- [x] Zgrupowany skrypt wsadowy PowerShell przyspieszający aplikację zmian do 1-2 sekund
-- [~] Rozszerzona heurystyka dla kart 2.5GbE / 10GbE (Intel Killer, Realtek Gaming, Marvell AQtion)
-- [ ] Automatyczne przełączanie profilu przy zmianie sieci (np. LAN w domu vs Wi-Fi w podróży)
-- [ ] Analizator zniekształceń buforowania (Bufferbloat Analyzer) i diagnostyka SNR Wi-Fi
+| Issue | Potential Cause | Solution |
+| :--- | :--- | :--- |
+| **Adapter not detected** | Adapter disabled or generic driver in use | Verify adapter is enabled in Windows Device Manager and official manufacturer drivers are installed. |
+| **Setting unavailable** | Driver does not expose this capability | Basic or generic drivers omit certain properties (e.g., RSS, EEE). WireTune automatically hides or skips unsupported settings. |
+| **Optimization failed** | Missing administrator rights | Launch WireTune as administrator using `WireTune-Admin.bat` or click **Restart as Administrator** in the app. |
+| **Connection re-negotiation** | Expected driver reload | Applying advanced driver parameters triggers a brief 1–2 second re-negotiation. This is expected and normal. |
 
 ---
 
-## 🤝 Współpraca (Contributing)
+## 🗺️ Roadmap
 
-Chcesz pomóc w rozwoju WireTune? Przeczytaj [CONTRIBUTING.md](CONTRIBUTING.md).
+WireTune is under active continuous development.
 
-1. Sforkuj repozytorium
-2. Stwórz gałąź funkcyjną (`git checkout -b feature/nowa-funkcja`)
-3. Zatwierdź zmiany (`git commit -m 'feat: dodanie nowej funkcji'`)
-4. Wyślij na branch (`git push origin feature/nowa-funkcja`)
-5. Otwórz Pull Request
+### 📌 v1.x — Foundation
+- [x] Hardware adapter detection via Windows NetAdapter subsystem
+- [x] Optimization profiles (`Balanced`, `Gaming`, `Streaming`, `Maximum Performance`)
+- [x] Automated pre-flight local JSON backups and rollback system
+- [x] Integrated Before / After Network Benchmark Center
+- [x] DNS Resolver Benchmark with 1-click manual apply
+- [x] Custom Adapter Profiles manager (create, save, export)
+- [x] Contextual "Why this setting?" technical explanations
+- [x] 100% Offline, Zero Telemetry architecture
+- [x] Portable Mode with self-contained `./WireTuneData/` storage
+- [x] Multi-language localization across 30 languages
+- [x] Windows 11 Fluent Design UI with Dark & Light mode
+- [x] Batched single-job PowerShell execution for lightning-fast application
+
+### 🚀 v2.x — Advanced Optimization
+- [~] Expanded vendor-specific property mappings (Intel Killer, Realtek Gaming, Marvell AQtion)
+- [~] Advanced driver capability detection and hardware limitation heuristics
+- [ ] Smarter per-adapter profile recommendation engine based on link type
+- [ ] Per-adapter profiles with automatic switching on network change
+- [ ] Multi-point configuration rollback history with side-by-side diffing
+- [ ] Automatic post-apply configuration verification and health check
+- [ ] A/B profile performance testing mode
+- [ ] More detailed network diagnostics (DPC latency indicators, packet drop counters)
+- [ ] Enhanced benchmark accuracy with multi-pass median filtering
+
+### 🧠 v3.x — Network Intelligence
+- [ ] Intelligent physical link quality analysis
+- [ ] Network bufferbloat and queue depth analyzer
+- [ ] Wi-Fi quality and signal-to-noise ratio (SNR) diagnostics
+- [ ] Wi-Fi channel crowding and frequency band analysis
+- [ ] Comprehensive Connection Health Score
+- [ ] Custom benchmark endpoint profiles and local iperf3 integration
+- [ ] Exportable diagnostic audit reports in PDF and Markdown
 
 ---
 
-## 📄 Licencja
+## 🤝 Contributing
 
-Projekt WireTune jest udostępniony na warunkach otwartoźródłowej licencji **[MIT License](LICENSE)**.
+Contributions from the community are warmly welcome! Please review our [Contributing Guidelines](CONTRIBUTING.md) to get started:
+
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+---
+
+## 🔒 Security & Privacy
+
+For details on our security practices or to report a vulnerability responsibly, please consult our [Security Policy](SECURITY.md) and [Privacy Policy](PRIVACY.md).
+
+---
+
+## 📄 License
+
+WireTune is open-source software licensed under the **[MIT License](LICENSE)**.
 
 ---
 
 <div align="center">
 
-Stworzone z pasją przez **[allynIT](https://github.com/allynIT)** ⚡  
+Engineered with passion by **[allynIT](https://github.com/allynIT)** ⚡  
 *WireTune • Safe, Fast & Transparent Network Optimization*
 
 </div>
