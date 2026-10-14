@@ -27,9 +27,9 @@ error*.json
 config.json
 portable.dat
 WireTuneData/
-backups/
-profiles/
-diagnostics/
+/backups/
+/profiles/
+/diagnostics/
 
 # Build outputs and intermediate binaries
 src-desktop/bin/

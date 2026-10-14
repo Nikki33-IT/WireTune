@@ -20,6 +20,8 @@ class DiagnosticTool {
       osRelease: os.release(),
       osPlatform: os.platform(),
       arch: os.arch(),
+      cpus: (os.cpus() && os.cpus().length) || 1,
+      totalMemoryMB: Math.round(os.totalmem() / (1024 * 1024)),
       runtime: `Node.js ${process.version}`,
       privacyMode: 'Offline Strictly Local'
     };
