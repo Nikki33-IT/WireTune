@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Privacy-100%25_Offline-00C853?style=for-the-badge&logo=shield" alt="Privacy" />
   <img src="https://img.shields.io/badge/Tests-15%20Passed-brightgreen?style=for-the-badge" alt="Tests" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
-  <img src="https://img.shields.io/badge/Author-allynIT-purple?style=for-the-badge" alt="allynIT" />
+  <img src="https://img.shields.io/badge/Author-Nikki-purple?style=for-the-badge" alt="Nikki" />
 </p>
 
 <p align="center">
@@ -243,7 +243,7 @@ WireTune is built on the fundamental principle that system utilities should **ne
 ## 🛠️ Quick Start & Installation
 
 ### Option 1: Standalone Portable (Recommended)
-1. Download the latest release package from [Releases](https://github.com/allynIT/WireTune/releases).
+1. Download the latest release package from [Releases](https://github.com/Nikki/WireTune/releases).
 2. Extract the archive to any folder or USB flash drive.
 3. Launch `WireTune.exe` (or right-click `WireTune-Admin.bat` and select **Run as administrator**).
 
@@ -258,7 +258,7 @@ WireTune is built on the fundamental principle that system utilities should **ne
 #### Steps
 ```bash
 # 1. Clone the repository
-git clone https://github.com/allynIT/WireTune.git
+git clone https://github.com/Nikki/WireTune.git
 cd WireTune
 
 # 2. Run automated test suite (15 unit tests)
@@ -423,7 +423,7 @@ WireTune is open-source software licensed under the **[MIT License](LICENSE)**.
 
 <div align="center">
 
-Engineered with passion by **[allynIT](https://github.com/allynIT)** ⚡  
+Engineered with passion by **[Nikki](https://github.com/Nikki)** ⚡  
 *WireTune • Safe, Fast & Transparent Network Optimization*
 
 </div>
